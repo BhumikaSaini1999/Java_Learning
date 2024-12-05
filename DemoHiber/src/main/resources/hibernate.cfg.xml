@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.password">Bhumi@1999</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernatedemo</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <!--  This setting updates the database schema by comparing the existing schema with the 
+        entity mappings. If there are differences, it will alter the schema to match the current 
+        entity definitions without dropping existing data. This is useful during development when 
+        you want the schema to evolve as your entity classes change, but you don't want to lose data. -->
+        
+        <!-- create will drop existing table everytime -->
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+        
+        <!-- second level cache->ehcache properties -->
+        <property name="hibernate.cache.use_second_level_cache">true</property> <!-- applicable for get method not for Query -->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <property name="hibernate.cache.use_query_cache">true</property><!-- applicable for Query cache -->
+    </session-factory>
+</hibernate-configuration>
